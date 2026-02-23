@@ -1,0 +1,432 @@
+{
+  "projectMetadata": {
+    "name": "Compliance Platform Landing Pages",
+    "artifact": "PRD.landing.json",
+    "strategyMode": "PMF-landing-pages-dual-audience",
+    "createdDate": "2026-02-13",
+    "timezone": "Europe/London",
+    "owner": "User",
+    "notes": [
+      "This PRD is intentionally separate from the main product PRD.json.",
+      "Goal: ship two static landing pages + waitlist capture + calendar link.",
+      "Implementation: Astro static site deployed to Netlify.",
+      "Keep this lean. No Shopify API. No backend. No database."
+    ]
+  },
+
+  "environmentSetup": {
+    "framework": "Astro",
+    "nodeVersion": ">=20",
+    "packageManager": "npm",
+    "buildCommand": "npm run build",
+    "publishDirectory": "dist",
+    "devCommand": "npm run dev",
+    "deploymentTarget": "Netlify",
+    "forms": "Netlify Forms",
+    "calendarLink": "External URL (e.g., Calendly)"
+  },
+
+  "progressTracking": {
+    "progressFile": "progress.landing.txt",
+    "featureIdPrefix": "L",
+    "statusValues": ["todo", "in_progress", "passes", "blocked"],
+    "rule": "After completing each feature, update PRD.landing.json and append a dated entry to progress.landing.txt."
+  },
+
+  "conversionObjective": {
+    "euMerchant": {
+      "primaryCTA": "waitlist",
+      "rationale": "Low-friction email capture suits small merchants exploring compliance tooling."
+    },
+    "midMarket": {
+      "primaryCTA": "calendar",
+      "rationale": "Mid-market buyers expect a sales conversation before committing."
+    },
+    "rule": "Each landing page has exactly one primary CTA. All sections on the page should support driving visitors toward that action. Avoid exploratory navigation that pulls visitors away from conversion."
+  },
+
+  "successMetrics": {
+    "primary": ["Waitlist submissions per week", "Calendar bookings per week"],
+    "secondary": [
+      "Conversion rate: visit -> waitlist",
+      "Conversion rate: visit -> booking"
+    ],
+    "engineering": [
+      "Build succeeds on clean install",
+      "All routes load directly by URL",
+      "Forms appear in Netlify dashboard",
+      "No broken internal links"
+    ]
+  },
+
+  "features": [
+    {
+      "id": "L000",
+      "title": "Initialize Astro landing project",
+      "goal": "Create minimal Astro static site ready for Netlify deployment.",
+      "tasks": [
+        "Create new landing repo or ./landing directory",
+        "Initialize Astro project (static output)",
+        "Add .gitignore (node_modules, dist, .netlify, env files)",
+        "Add README with dev + deploy instructions"
+      ],
+      "verification": [
+        "npm run dev starts Astro dev server",
+        "npm run build outputs ./dist",
+        "README contains clear setup steps"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L001",
+      "title": "Create site routes",
+      "goal": "Add required pages and shared layout.",
+      "tasks": [
+        "Create / (chooser page)",
+        "Create /eu-merchant",
+        "Create /mid-market",
+        "Create /thanks",
+        "Create shared layout with header/footer"
+      ],
+      "verification": [
+        "All routes render correctly locally",
+        "Layout consistent across pages"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L002",
+      "title": "EU merchant landing copy",
+      "goal": "Conversion-focused messaging for Shopify merchants selling physical products into the EU..",
+      "tasks": [
+        "Hero section with clear problem + CTA",
+        "3-bullet value summary",
+        "3-step 'How it works'",
+        "MVP feature list",
+        "FAQ section"
+      ],
+      "verification": [
+        "Value proposition clear within 10 seconds",
+        "Primary CTA visible above the fold"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L003",
+      "title": "Mid-market landing copy",
+      "goal": "Credibility-focused messaging for mid-market brands.",
+      "tasks": [
+        "Hero section with audit-ready framing",
+        "Use cases section",
+        "Capability bullets (audit trail, exports, roles)",
+        "'Not a fit if' section",
+        "FAQ section"
+      ],
+      "verification": [
+        "Page invites a sales conversation",
+        "No overpromising of regulatory automation"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L004",
+      "title": "Implement Netlify Forms",
+      "goal": "Capture leads without backend.",
+      "tasks": [
+        "Add Netlify form to /eu-merchant",
+        "Add Netlify form to /mid-market",
+        "Redirect submissions to /thanks"
+      ],
+      "verification": [
+        "Forms detected by Netlify after deploy",
+        "Test submission appears in Netlify dashboard",
+        "Redirect to /thanks works"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L005",
+      "title": "Calendar integration",
+      "goal": "Ensure calendar link visible and consistent.",
+      "tasks": [
+        "Add calendar CTA above the fold on both landing pages",
+        "Add calendar CTA on /thanks",
+        "Centralize calendar URL in config"
+      ],
+      "verification": [
+        "All calendar links use configured URL",
+        "At least one booking CTA visible without scrolling"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L006",
+      "title": "Responsive layout",
+      "goal": "Mobile-first clean layout optimized for conversion.",
+      "tasks": [
+        "Single-column mobile layout",
+        "Clear spacing and typography",
+        "Accessible buttons and contrast"
+      ],
+      "verification": [
+        "Layout works at 375px and 1280px",
+        "Buttons easy to tap on mobile"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L007",
+      "title": "SEO and metadata",
+      "goal": "Add basic SEO and social sharing metadata.",
+      "tasks": [
+        "Unique title + description per page",
+        "Add OpenGraph tags",
+        "Add Twitter card tags"
+      ],
+      "verification": [
+        "Meta tags present in page source",
+        "Each page has unique metadata"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L008",
+      "title": "Privacy baseline",
+      "goal": "Minimal compliance for collecting emails.",
+      "tasks": [
+        "Add Privacy Policy link in footer",
+        "Add short data usage note near forms"
+      ],
+      "verification": [
+        "Privacy link visible on all pages",
+        "Form includes clear data usage notice"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L009",
+      "title": "Netlify deployment configuration",
+      "goal": "Ensure successful Netlify deploy.",
+      "tasks": [
+        "Add netlify.toml with build command and publish directory",
+        "Ensure all routes load directly by URL",
+        "Add simple 404 page"
+      ],
+      "verification": [
+        "Netlify build succeeds",
+        "Direct URL access works for all routes"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L010",
+      "title": "Lean quality checks",
+      "goal": "Prevent shipping broken landing page.",
+      "tasks": [
+        "Ensure clean build on fresh install",
+        "Verify no broken internal links",
+        "Optional: add simple Playwright smoke test for route loading"
+      ],
+      "verification": [
+        "npm run build succeeds in clean environment",
+        "No broken links detected"
+      ],
+      "status": "passes"
+    },
+
+    {
+      "id": "L011",
+      "title": "Post-launch checklist",
+      "goal": "Ensure lead capture works after deploy.",
+      "tasks": [
+        "Submit test forms",
+        "Verify calendar link works",
+        "Check mobile layout",
+        "Review metadata in browser devtools"
+      ],
+      "verification": [
+        "Test lead visible in Netlify dashboard",
+        "Calendar opens correctly"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L012",
+      "title": "Minimal CI build check (GitHub Actions)",
+      "goal": "Prevent broken builds from being deployed to Netlify.",
+      "tasks": [
+        "Create .github/workflows/ci.yml",
+        "Configure workflow to run on pull_request and push to main",
+        "Steps: npm ci, npm run build",
+        "Optional: add astro check or lint step"
+      ],
+      "verification": [
+        "Workflow runs automatically on PR",
+        "Build fails if npm run build fails",
+        "No coverage requirements or complex pipeline logic"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L013",
+      "title": "Dependabot (weekly, grouped, low-noise)",
+      "goal": "Keep dependencies reasonably up to date without creating churn.",
+      "tasks": [
+        "Create .github/dependabot.yml",
+        "Configure weekly schedule",
+        "Group dependency updates into a single PR",
+        "Limit to npm ecosystem"
+      ],
+      "verification": [
+        "Dependabot opens at most one grouped PR per week",
+        "No daily spam PRs",
+        "Can be disabled easily if noisy"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L014",
+      "title": "Explicit Conversion Objective",
+      "goal": "Define a single primary conversion goal for the landing page to avoid distraction and scope creep.",
+      "tasks": [
+        "Define primary CTA as waitlist signup or calendar booking",
+        "Remove or avoid top navigation links that distract from conversion",
+        "Ensure all sections support conversion clarity",
+        "Document conversion goal in PRD.landing.json"
+      ],
+      "verification": [
+        "One clearly defined primary CTA",
+        "No exploratory navigation elements",
+        "Page messaging consistently drives toward conversion"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L015",
+      "title": "Hero Restructure for 5-Second Clarity",
+      "goal": "Ensure visitors understand who the product is for, what problem it solves, and what to do next within 5 seconds.",
+      "tasks": [
+        "Replace hero headline with outcome-driven statement",
+        "Limit subheading to 1–2 concise sentences",
+        "Make primary CTA visually dominant",
+        "Ensure logo is present but not visually overpowering"
+      ],
+      "verification": [
+        "Hero contains no long paragraphs",
+        "Clear statement of target audience",
+        "CTA is the strongest visual element above the fold"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L016",
+      "title": "Intentional Layout and Spacing",
+      "goal": "Improve visual hierarchy so the page feels deliberate rather than placeholder.",
+      "tasks": [
+        "Increase vertical spacing between sections",
+        "Establish clear heading scale (H1, H2, H3)",
+        "Constrain body text width to readable range",
+        "Ensure consistent padding across sections"
+      ],
+      "verification": [
+        "No dense text blocks",
+        "Clear scannability throughout page",
+        "Layout feels structured and intentional"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L017",
+      "title": "Introduce Single Accent Color",
+      "goal": "Add one accent color to improve intentionality while maintaining minimal design.",
+      "tasks": [
+        "Select one accent color (hex value)",
+        "Apply accent color only to primary CTA and hover state",
+        "Ensure accessibility contrast meets WCAG AA",
+        "Avoid gradients and additional colors"
+      ],
+      "verification": [
+        "Exactly one accent color used consistently",
+        "Primary CTA visually distinct",
+        "No additional decorative colors introduced"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L018",
+      "title": "Add 3-Step How-It-Works Section",
+      "goal": "Explain product flow simply to reduce cognitive friction.",
+      "tasks": [
+        "Add section with three steps",
+        "Limit each step to short title and one sentence",
+        "Avoid technical jargon",
+        "Visually separate from hero section"
+      ],
+      "verification": [
+        "Section readable in under 20 seconds",
+        "No feature-level implementation detail included",
+        "Clear logical flow from step 1 to step 3"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L019",
+      "title": "Outcome-Based Benefits Section",
+      "goal": "Shift messaging from features to business outcomes to increase relevance.",
+      "tasks": [
+        "Add section titled 'Why it matters' or equivalent",
+        "Include three outcome-driven benefit statements",
+        "Remove technical feature language",
+        "Frame benefits in business impact terms"
+      ],
+      "verification": [
+        "No references to dashboards, APIs, or integrations",
+        "Benefits emphasize risk reduction, time savings, or readiness",
+        "Section supports conversion rather than exploration"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L020",
+      "title": "Add Trust Signal Block",
+      "goal": "Increase perceived legitimacy without overclaiming.",
+      "tasks": [
+        "Add short credibility statement near footer",
+        "Keep tone understated and factual",
+        "Avoid exaggerated claims or hype language"
+      ],
+      "verification": [
+        "Trust signal limited to one short paragraph",
+        "Tone aligns with compliance-focused product",
+        "Positioned above final CTA section"
+      ],
+      "status": "passes"
+    },
+    {
+      "id": "L021",
+      "title": "Bottom CTA Reinforcement",
+      "goal": "Reinforce conversion decision at the end of the page.",
+      "tasks": [
+        "Add short closing reinforcement statement",
+        "Include large primary CTA button",
+        "Add short reassurance text (e.g., no spam, early access only)"
+      ],
+      "verification": [
+        "CTA visually strongest element in final section",
+        "No ambiguity about next step",
+        "Section clearly separated from trust block"
+      ],
+      "status": "passes"
+    }
+  ]
+}
