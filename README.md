@@ -32,6 +32,22 @@ Preview the production build locally:
 npm run preview
 ```
 
+## Linting
+
+```sh
+npm run lint        # Check for issues
+npm run lint:fix    # Auto-fix where possible
+```
+
+ESLint enforces import/export sorting (alphabetically) and object key sorting (alphabetically, natural order).
+
+## Formatting
+
+```sh
+npm run format        # Format all files
+npm run format:check  # Check formatting (used in CI)
+```
+
 ## Testing
 
 Install Playwright browsers (first time only):
@@ -40,11 +56,31 @@ Install Playwright browsers (first time only):
 npm run test:install
 ```
 
-Run the smoke tests:
+Run the smoke tests (verifies pages render and key UI elements):
 
 ```sh
 npm run test
 ```
+
+## Pre-commit hooks
+
+Husky runs the following on every commit:
+
+- Lint and format staged files (via lint-staged)
+- Type check (`astro check`)
+- Format check
+- Full lint
+- Smoke tests
+
+To bypass (e.g. WIP commits): `git commit --no-verify`
+
+## CI
+
+GitHub Actions runs on push and PR to `main`:
+
+- Type check, lint, format check
+- Build
+- Smoke tests (Playwright)
 
 ## Deployment
 

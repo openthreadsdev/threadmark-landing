@@ -3,81 +3,80 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Threadmark — Compliance for Commerce">
-	<section class="chooser container">
-		<h1>Compliance infrastructure for modern commerce</h1>
-		<p class="subtitle">Choose the path that fits your business.</p>
+  <section class="chooser container">
+    <h1>Compliance infrastructure for modern commerce</h1>
+    <p class="subtitle">Choose the path that fits your business.</p>
 
-		<div class="cards">
-			<a href="/eu-merchant" class="card">
-				<h2>EU Shopify Merchants</h2>
-				<p>Automated compliance for small merchants selling into the EU.</p>
-			</a>
+    <div class="cards">
+      <a href="/eu-merchant" class="card">
+        <h2>EU Shopify Merchants</h2>
+        <p>Automated compliance for small merchants selling into the EU.</p>
+      </a>
 
-			<a href="/mid-market" class="card">
-				<h2>Mid-Market Brands</h2>
-				<p>Audit-ready compliance infrastructure for growing brands.</p>
-			</a>
-		</div>
-	</section>
+      <a href="/mid-market" class="card">
+        <h2>Mid-Market Brands</h2>
+        <p>Audit-ready compliance infrastructure for growing brands.</p>
+      </a>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-	.chooser {
-		text-align: center;
-		padding: 2.5rem 0;
-	}
+  .chooser {
+    text-align: center;
+    padding: 2.5rem 0;
+  }
 
-	h1 {
-		margin-bottom: 0.5rem;
-	}
+  h1 {
+    margin-bottom: 0.5rem;
+  }
 
-	.subtitle {
-		font-size: 1.125rem;
-		color: var(--color-text-muted);
-		margin-bottom: 3rem;
-	}
+  .subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
 
-	.cards {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1.5rem;
-		max-width: 40rem;
-		margin: 0 auto;
-	}
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
 
-	.card {
-		border: 1px solid var(--color-border);
-		border-radius: 0.5rem;
-		padding: 2rem;
-		text-decoration: none;
-		color: inherit;
-		transition: border-color 0.15s ease;
-	}
+  .card {
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease;
+  }
 
-	.card:hover {
-		border-color: var(--color-text);
-	}
+  .card:hover {
+    border-color: var(--color-text);
+  }
 
-	.card h2 {
-		font-size: 1.25rem;
-		font-weight: 700;
-		margin-bottom: 0.5rem;
-	}
+  .card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
 
-	.card p {
-		color: var(--color-text-muted);
-		font-size: 0.9375rem;
-	}
+  .card p {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+  }
 
-	@media (min-width: 640px) {
-		.chooser {
-			padding: 4rem 0;
-		}
+  @media (min-width: 640px) {
+    .chooser {
+      padding: 4rem 0;
+    }
 
-		.cards {
-			grid-template-columns: 1fr 1fr;
-			max-width: 48rem;
-		}
-
-	}
+    .cards {
+      grid-template-columns: 1fr 1fr;
+      max-width: 48rem;
+    }
+  }
 </style>

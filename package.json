@@ -11,15 +11,31 @@
     "check": "astro check",
     "typecheck": "astro check",
     "clean": "rm -rf dist .astro",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "playwright test",
-    "test:install": "playwright install --with-deps chromium"
+    "test:install": "playwright install --with-deps chromium",
+    "prepare": "husky"
   },
   "dependencies": {
-    "astro": "^5.17.1",
     "@astrojs/check": "^0.9.4",
+    "astro": "^5.17.1",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.50.1"
+    "@eslint/js": "^9.39.3",
+    "@playwright/test": "^1.50.1",
+    "eslint": "^9.39.3",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.6.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^17.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.56.1"
   }
 }
