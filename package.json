@@ -27,7 +27,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.3",
     "@playwright/test": "^1.50.1",
-    "eslint": "^9.39.3",
+    "eslint": "^10.0.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-astro": "^1.6.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
