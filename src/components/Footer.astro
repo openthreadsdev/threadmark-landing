@@ -1,13 +1,37 @@
 ---
-
+import { siteConfig } from '../config';
 ---
 
 <footer>
   <div class="footer-inner">
-    <p>&copy; {new Date().getFullYear()} Threadmark. All rights reserved.</p>
-    <nav class="footer-links">
-      <a href="/privacy">Privacy Policy</a>
-    </nav>
+    <div class="footer-top">
+      <div class="brand">
+        <div class="brand-row">
+          <img
+            src="/assets/spool/spool-icon.svg"
+            alt="Threadmark logo"
+            class="spool-icon"
+          />
+          <span class="brand-name">Threadmark</span>
+        </div>
+        <p class="tagline">{siteConfig.siteTagline}</p>
+      </div>
+      <nav class="footer-links">
+        <a href="/">Home</a>
+        <a href="/eu-merchant">EU Merchant</a>
+        <a href="/mid-market">Mid-Market</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {new Date().getFullYear()} Threadmark. All rights reserved.
+      </p>
+      <p class="disclaimer">
+        Not legal advice. We provide data infrastructure tools, not legal
+        services.
+      </p>
+    </div>
   </div>
 </footer>
 
@@ -21,27 +45,93 @@
   .footer-inner {
     max-width: 72rem;
     margin: 0 auto;
-    text-align: center;
   }
 
-  p {
-    margin: 0;
-    color: var(--color-text-muted);
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  .brand {
+    max-width: 20rem;
+  }
+
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .spool-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .brand-name {
     font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .tagline {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--color-text-muted);
   }
 
   .footer-links {
-    margin-top: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 
   .footer-links a {
-    color: var(--color-text-muted);
     font-size: 0.875rem;
+    color: var(--color-text-muted);
     text-decoration: none;
+    transition: color 0.15s ease;
   }
 
   .footer-links a:hover {
     color: var(--color-text);
-    text-decoration: underline;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .copyright,
+  .disclaimer {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .disclaimer {
+    font-style: italic;
   }
 </style>

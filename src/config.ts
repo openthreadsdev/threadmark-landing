@@ -6,4 +6,6 @@ export const siteConfig = {
     euMerchant: 'waitlist',
     midMarket: 'calendar',
   },
+  privacyEmail: 'privacy@openthreads.dev',
+  siteTagline: 'Compliance infrastructure for modern commerce.',
 } as const;

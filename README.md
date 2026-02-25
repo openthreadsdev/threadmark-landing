@@ -62,17 +62,18 @@ Run the smoke tests (verifies pages render and key UI elements):
 npm run test
 ```
 
-## Pre-commit hooks
+## Git hooks
 
-Husky runs the following on every commit:
+**Pre-commit** (Husky) runs on every commit:
 
 - Lint and format staged files (via lint-staged)
 - Type check (`astro check`)
 - Format check
 - Full lint
-- Smoke tests
 
-To bypass (e.g. WIP commits): `git commit --no-verify`
+**Pre-push** runs smoke tests before pushing.
+
+To bypass (e.g. WIP commits): `git commit --no-verify` or `git push --no-verify`
 
 ## CI
 

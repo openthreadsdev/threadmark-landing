@@ -123,4 +123,4 @@ tests/
 2. **Config changes**: Update `src/config.ts`; conversion goals affect CTA behavior.
 3. **Styling**: Use existing CSS variables; keep `.container` and section spacing consistent.
 4. **Forms**: Use `data-netlify="true"` and `name` matching `form-name` hidden input; register form in Netlify dashboard.
-5. **Pre-commit**: Husky runs lint, format, type check, and tests — use `git commit --no-verify` only when necessary.
+5. **Pre-commit**: Husky runs lint, format, type check — use `git commit --no-verify` when necessary. **Pre-push**: Runs smoke tests — use `git push --no-verify` when necessary.
